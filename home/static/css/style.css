@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+    padding-top: 50px;
+    background-color: #D8BFD8; 
+}
+
+h1 {
+    font-family: 'Acme', sans-serif;
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 215, 0, .25);
+    color: black;
+}
+h2 {
+    font-family: 'Acme', sans-serif;
+}
+
+a, p {
+    font-family: 'Playfair Display SC', serif;
+}
+
+
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid #ededed;
+}
+
+.icon-bar {
+    background-color: green;
+}
+
+
+.accountform {
+    padding-top: 20px;
+}
