@@ -6,6 +6,7 @@ from decimal import Decimal
 from cart.utils import get_cart_items
 from django.utils import timezone
 from .models import OrderLineItem
+from django.conf import settings
 
 
 # Create your views here.
@@ -38,7 +39,7 @@ def checkout(request):
         order_form = OrderForm()
         payment_form = MakePaymentForm()
         
-        context = {'order_form': order_form, 'payment_form': payment_form, 'publishable': 'whatever' }
+        context = {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE_KEY }
         
         cart = request.session.get('cart', {})
         cart_items_and_total = get_cart_items(cart)
