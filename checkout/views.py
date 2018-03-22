@@ -4,12 +4,33 @@ from .forms import OrderForm, MakePaymentForm
 from products.models import *
 from decimal import Decimal
 from cart.utils import get_cart_items
+from django.utils import timezone
+from .models import OrderLineItem
 
 
 # Create your views here.
 def checkout(request):
 
     if request.method=="POST":
+        
+        order_form = OrderForm(request.POST)
+        order = order_form.save(commit=False)
+        order.date = timezone.now()
+        
+        order.save()
+        
+        cart = request.session.get('cart', {})
+        for id, quantity in cart.items():
+            product = get_object_or_404(Product, pk=id)
+            order_line_item = OrderLineItem (
+                order = order,
+                product = product,
+                quantity = quantity
+                )
+            order_line_item.save()
+        
+        
+        
         del request.session['cart']
         return redirect("home")
     
