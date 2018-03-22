@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'reviews',
+    'checkout',
     'django_forms_bootstrap',
     'django_gravatar',
 ]
@@ -136,3 +137,6 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
